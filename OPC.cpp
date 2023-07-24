@@ -99,6 +99,7 @@ int main(void)
     auto green_things = bf.filter(all, green); 
     for (auto& x : green_things) 
         cout << x->name << " is green" << endl; 
+        cout << endl; 
 
     return 0;
 }
