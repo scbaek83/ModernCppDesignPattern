@@ -17,9 +17,12 @@ public:
     }
 
     auto get_entries() const { return m_entries; } 
-    void save(const string &filename) {
+};
+
+struct SavingManager {
+    static void save(const Journal &j, const string &filename) {
         ofstream ofs(filename); 
-        for (auto &s : m_entries) 
+        for (auto &s : j.get_entries()) 
             ofs << s << endl; 
     }
 };
@@ -27,10 +30,10 @@ public:
 int main() 
 {
     Journal journal{" Dear XYZ"}; 
-    journal.add_entries("I ate a bug"); 
-    journal.add_entries("I cried today"); 
-    journal.save("diary.txt"); 
-
+    journal.add_entries("I ate a bug2"); 
+    journal.add_entries("I cried today2"); 
+    
+    SavingManager::save(journal, "diary.txt"); 
 
     return EXIT_SUCCESS; 
 }
